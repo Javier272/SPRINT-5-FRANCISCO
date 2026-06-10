@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.springframework.stereotype.Service;
 
+import com.exampleback.demo.dto.CreateMetricRequestDTO;
 import com.exampleback.demo.dto.MetricResponseDTO;
 import com.exampleback.demo.model.DeveloperMetric;
 import com.exampleback.demo.repository.DeveloperMetricRepository;
@@ -57,5 +58,20 @@ return metrics.stream()
                 return dto;
         })
         .toList();
+        
 }
+public void createMetric(CreateMetricRequestDTO requestDTO) {
+        DeveloperMetric newMetric = new DeveloperMetric();
+        
+        // Mapeamos los datos del DTO a la Entidad real
+        newMetric.setDeveloperName(requestDTO.getDeveloperName());
+        newMetric.setMetricDate(requestDTO.getMetricDate());
+        newMetric.setCommits(requestDTO.getCommits());
+        newMetric.setBugsFixed(requestDTO.getBugsFixed());
+        newMetric.setTasksCompleted(requestDTO.getTasksCompleted());
+        newMetric.setStoryPoints(requestDTO.getStoryPoints());
+
+        // Guardamos en la base de datos remota
+        repository.save(newMetric);
+    }
 }
