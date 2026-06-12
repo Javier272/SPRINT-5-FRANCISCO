@@ -30,7 +30,7 @@ public class MetricsController {
         return service.getMetricData(metric);
     }
 
-    // NUEVO ENDPOINT PARA LA PROPUESTA DE MEJORA
+    // endpoint para crear una nueva metrica y guardad en la db
     @PostMapping
     public ResponseEntity<String> createMetric(@RequestBody CreateMetricRequestDTO requestDTO) {
         service.createMetric(requestDTO);

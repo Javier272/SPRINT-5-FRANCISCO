@@ -63,7 +63,7 @@ return metrics.stream()
 public void createMetric(CreateMetricRequestDTO requestDTO) {
         DeveloperMetric newMetric = new DeveloperMetric();
         
-        // Mapeamos los datos del DTO a la Entidad real
+        // Mapea los datos del DTO a la Entidad real
         newMetric.setDeveloperName(requestDTO.getDeveloperName());
         newMetric.setMetricDate(requestDTO.getMetricDate());
         newMetric.setCommits(requestDTO.getCommits());
@@ -71,7 +71,7 @@ public void createMetric(CreateMetricRequestDTO requestDTO) {
         newMetric.setTasksCompleted(requestDTO.getTasksCompleted());
         newMetric.setStoryPoints(requestDTO.getStoryPoints());
 
-        // Guardamos en la base de datos remota
+        // Guarda en la db
         repository.save(newMetric);
     }
 }
